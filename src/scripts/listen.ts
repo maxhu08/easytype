@@ -19,11 +19,15 @@ export const listenToEvents = () => {
       const wordSpanEl = document.getElementById(`w-${wordIndex}`) as HTMLSpanElement;
 
       if (testInput.value === wordSpanEl.textContent) {
-        // prettier-ignore
-        (document.getElementById(`w-${wordIndex}`) as HTMLSpanElement).classList.remove("bg-neutral-500");
+        const prevWordSpanEl = document.getElementById(`w-${wordIndex}`) as HTMLSpanElement;
+
+        prevWordSpanEl.classList.remove("bg-neutral-500", "text-white");
+        prevWordSpanEl.classList.add("text-emerald-500");
+
         wordIndex++;
-        // prettier-ignore
-        (document.getElementById(`w-${wordIndex}`) as HTMLSpanElement).classList.add("bg-neutral-500");
+
+        const currWordSpanEl = document.getElementById(`w-${wordIndex}`) as HTMLSpanElement;
+        currWordSpanEl.classList.add("bg-neutral-500");
 
         testInput.value = "";
       }
