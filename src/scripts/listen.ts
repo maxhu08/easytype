@@ -2,6 +2,7 @@ import { testCard, testInput, resultsCard } from "./ui";
 import { getCurrentState, setCurrentState } from "./utils/current-state";
 import { focusTestInput, tryFocusTestInput, unfocusTestInput } from "./utils/input";
 import { tryFocusRestartButton, unfocusRestartButton } from "./utils/restart-button";
+import { startTimer, stopTimer } from "./utils/start-timer";
 import { getWordIndex, setWordIndex } from "./utils/word-index";
 
 export const listenToEvents = () => {
@@ -54,10 +55,10 @@ const listenCompleteWord = () => {
           setCurrentState("finished");
           testCard.classList.replace("block", "hidden");
           resultsCard.classList.replace("hidden", "block");
+          stopTimer();
         } else {
           const currWordSpanEl = document.getElementById(`w-${wordIndex}`) as HTMLSpanElement;
           currWordSpanEl.classList.add("bg-neutral-500", "rounded-md");
-
           testInput.value = "";
         }
       }
@@ -69,6 +70,9 @@ const listenCharInput = () => {
   testInput.addEventListener("input", () => {
     const wordIndex = getWordIndex();
     const currWordSpanEl = document.getElementById(`w-${wordIndex}`) as HTMLSpanElement;
+
+    if (wordIndex === 0 && testInput.value.length === 1) startTimer();
+
     const correctSoFar = currWordSpanEl.textContent?.startsWith(testInput.value);
 
     if (!correctSoFar) currWordSpanEl.classList.replace("bg-neutral-500", "bg-rose-500");
