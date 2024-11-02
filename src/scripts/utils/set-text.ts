@@ -1,9 +1,11 @@
 import english from "../../languages/english";
 import { testText } from "../ui";
+import { setCurrentState } from "./current-state";
 
 export const setTest = () => {
   testText.textContent = "";
   let testContent = "";
+  setCurrentState("in-progress");
 
   for (let i = 0; i < 20; i++) {
     const word = english.words[Math.floor(Math.random() * english.words.length)];

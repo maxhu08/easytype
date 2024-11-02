@@ -1,4 +1,5 @@
-import { resultsCard, testCard, testInput } from "./ui";
+import { resultsCard, testCard, testInput, testText } from "./ui";
+import { getCurrentState, setCurrentState } from "./utils/current-state";
 import { focusTestInput, tryFocusTestInput, unfocusTestInput } from "./utils/input";
 import { getWordIndex, setWordIndex } from "./utils/word-index";
 
@@ -24,7 +25,7 @@ const listenFocusTestInput = () => {
 const listenCompleteWord = () => {
   document.addEventListener("keydown", (e) => {
     if (e.key === "Escape") unfocusTestInput();
-    if (e.key === " ") {
+    if (e.key === " " && getCurrentState() === "in-progress") {
       e.preventDefault();
       tryFocusTestInput(e);
       let wordIndex = getWordIndex();
@@ -41,6 +42,7 @@ const listenCompleteWord = () => {
         setWordIndex(wordIndex);
 
         if (wordIndex === 20) {
+          setCurrentState("finished");
           testCard.classList.replace("block", "hidden");
           resultsCard.classList.replace("hidden", "block");
         } else {
