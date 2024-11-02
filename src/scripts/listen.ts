@@ -75,5 +75,7 @@ const listenCharInput = () => {
 
     if (!correctSoFar) currWordSpanEl.classList.replace("bg-neutral-500", "bg-rose-500");
     else currWordSpanEl.classList.replace("bg-rose-500", "bg-neutral-500");
+
+    if (wordIndex === 19 && testInput.value === currWordSpanEl.textContent) finishTest();
   });
 };
