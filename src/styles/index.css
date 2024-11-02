@@ -4,6 +4,11 @@
   transition-duration: 250ms;
 }
 
+span {
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+}
+
 .font-jetbrains-mono {
   font-family: "Jetbrains Mono", monospace;
 }
