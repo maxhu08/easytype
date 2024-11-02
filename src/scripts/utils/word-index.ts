@@ -1,4 +1,4 @@
-import { testText } from "./ui";
+import { testText } from "../ui";
 
 export const getWordIndex = () => {
   return parseInt(testText.getAttribute("word-index") as string);

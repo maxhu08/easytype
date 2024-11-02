@@ -1,5 +1,5 @@
-import english from "../languages/english";
-import { testText } from "./ui";
+import english from "../../languages/english";
+import { testText } from "../ui";
 
 export const setTest = () => {
   let testContent = "";

@@ -1,6 +1,6 @@
 import { resultsCard, testCard, testInput } from "./ui";
-import { focusTestInput, tryFocusTestInput, unfocusTestInput } from "./input";
-import { getWordIndex, setWordIndex } from "./utils";
+import { focusTestInput, tryFocusTestInput, unfocusTestInput } from "./utils/input";
+import { getWordIndex, setWordIndex } from "./utils/word-index";
 
 export const listenToEvents = () => {
   listenFocusTestInput();

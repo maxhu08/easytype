@@ -1,4 +1,4 @@
-import { testInput, testInputContainer } from "./ui";
+import { testInput, testInputContainer } from "../ui";
 
 export const tryFocusTestInput = (e: KeyboardEvent) => {
   // in case already focused

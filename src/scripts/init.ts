@@ -1,5 +1,5 @@
 import { listenToEvents } from "./listen";
-import { setTest } from "./set-text";
+import { setTest } from "./utils/set-text";
 
 listenToEvents();
 setTest();
