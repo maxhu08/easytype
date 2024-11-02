@@ -19,29 +19,31 @@
     </div>
   </a>
   <div class="h-screen grid place-items-center">
-    <div id="test-card" class="bg-neutral-800 p-4 rounded-md w-[95%] md:w-[75%] xl:w-[50%] block">
-      <div class="grid grid-rows-[max-content_max-content] gap-4">
-        <div class="bg-neutral-900 rounded-md p-4">
-          <p id="test-text" class="font-jetbrains-mono text-white text-4xl leading-[3rem]" word-index="0"
-            current-state="in-progress"></p>
-        </div>
-        <div id="test-input-container"
-          class="font-jetbrains-mono text-white text-4xl w-full rounded-md overflow-hidden border-2 border-transparent">
-          <input id="test-input" class="bg-neutral-900 outline-none w-full p-2" type="text" autocomplete="off"
-            autocapitalize="off">
-        </div>
-      </div>
-    </div>
-    <div id="results-card" class="bg-neutral-800 p-4 rounded-md w-[95%] md:w-[75%] xl:w-[50%] hidden">
-      <div class="grid grid-rows-[max-content_max-content]">
-        <p class="font-jetbrains-mono text-white text-4xl leading-[3rem] text-center">Test completed!</p>
-        <div class="grid place-items-center py-10">
-          <button id="restart-test-button"
-            class="bg-neutral-800 hover:bg-neutral-900 focus:bg-neutral-900 transition p-2 rounded-md cursor-pointer outline-none duration-200 ease-in-out">
-            <span class="font-jetbrains-mono text-neutral-500 text-4xl">restart test</span>
-          </button>
+    <div class="grid place-items-center grid-flow-row gap-4">
+      <div id="test-card" class="bg-neutral-800 p-4 rounded-md w-[95vw] md:w-[75vw] xl:w-[50vw] block">
+        <div class="grid grid-rows-[max-content_max-content] gap-4">
+          <div class="bg-neutral-900 rounded-md p-4">
+            <p id="test-text" class="font-jetbrains-mono text-white text-4xl leading-[3rem]" word-index="0"
+              current-state="in-progress"></p>
+          </div>
+          <div id="test-input-container"
+            class="font-jetbrains-mono text-white text-4xl w-full rounded-md overflow-hidden border-2 border-transparent">
+            <input id="test-input" class="bg-neutral-900 outline-none w-full p-2" type="text" autocomplete="off"
+              autocapitalize="off">
+          </div>
         </div>
       </div>
+      <div id="results-card" class="bg-neutral-800 p-4 rounded-md w-[95vw] md:w-[75vw] xl:w-[50vw] hidden">
+        <div class="grid grid-rows-[max-content_max-content]">
+          <p class="font-jetbrains-mono text-white text-4xl leading-[3rem] text-center">Test completed!</p>
+          <div class="grid place-items-center py-10">
+          </div>
+        </div>
+      </div>
+      <button id="restart-test-button"
+        class="bg-neutral-900 hover:bg-neutral-800 focus:bg-neutral-800 transition p-2 rounded-md cursor-pointer outline-none duration-100 ease-in-out">
+        <span class="font-jetbrains-mono text-neutral-500 text-4xl">restart test</span>
+      </button>
     </div>
   </div>
 </body>
