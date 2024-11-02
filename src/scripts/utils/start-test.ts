@@ -8,8 +8,8 @@ export const handleStartTest = () => {
   setWordIndex(0);
   testInput.value = "";
 
-  tryFocusTestInput();
-
   testCard.classList.replace("hidden", "block");
   resultsCard.classList.replace("block", "hidden");
+
+  tryFocusTestInput();
 };
