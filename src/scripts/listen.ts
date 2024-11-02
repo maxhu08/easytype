@@ -1,6 +1,7 @@
-import { resultsCard, testCard, testInput, testText } from "./ui";
+import { testCard, testInput, resultsCard } from "./ui";
 import { getCurrentState, setCurrentState } from "./utils/current-state";
 import { focusTestInput, tryFocusTestInput, unfocusTestInput } from "./utils/input";
+import { tryFocusRestartButton, unfocusRestartButton } from "./utils/restart-button";
 import { getWordIndex, setWordIndex } from "./utils/word-index";
 
 export const listenToEvents = () => {
@@ -24,7 +25,15 @@ const listenFocusTestInput = () => {
 
 const listenCompleteWord = () => {
   document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape") unfocusTestInput();
+    if (e.key === "Escape") {
+      unfocusTestInput();
+      unfocusRestartButton();
+    }
+
+    if (e.key === "Tab") {
+      tryFocusRestartButton(e);
+    }
+
     if (e.key === " " && getCurrentState() === "in-progress") {
       e.preventDefault();
       tryFocusTestInput(e);
