@@ -25,12 +25,21 @@ export const listenToEvents = () => {
         prevWordSpanEl.classList.add("text-emerald-500");
 
         wordIndex++;
-
         const currWordSpanEl = document.getElementById(`w-${wordIndex}`) as HTMLSpanElement;
-        currWordSpanEl.classList.add("bg-neutral-500");
+        currWordSpanEl.classList.add("bg-neutral-500", "rounded-md");
 
         testInput.value = "";
       }
     }
+  });
+
+  testInput.addEventListener("input", () => {
+    const currWordSpanEl = document.getElementById(`w-${wordIndex}`) as HTMLSpanElement;
+    const correctSoFar = currWordSpanEl.textContent?.startsWith(testInput.value);
+
+    console.log(currWordSpanEl.textContent, testInput.value, correctSoFar);
+
+    if (!correctSoFar) currWordSpanEl.classList.replace("bg-neutral-500", "bg-rose-500");
+    else currWordSpanEl.classList.replace("bg-rose-500", "bg-neutral-500");
   });
 };
