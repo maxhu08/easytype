@@ -7,10 +7,15 @@
   <link rel="stylesheet" type="text/css" href="styles/index.css">
   <link rel="stylesheet" type="text/css" href="styles/tailwind.css">
   <script src="scripts/init.ts" type="module" defer></script>
-  <title>Hello World!</title>
+  <link rel="icon" href="assets/logo.png" type="image/x-icon">
+  <title>easytype</title>
 </head>
 
-<body class="bg-neutral-900 min-h-screen">
+<body class="bg-neutral-900 min-h-screen" dir="ltr">
+  <div class="fixed grid grid-cols-[max-content_auto] place-items-center gap-2 top-2 left-2">
+    <img src="assets/logo.png" class="w-12 h-12" />
+    <span class="font-jetbrains-mono text-neutral-500 text-4xl font-semibold">easytype</span>
+  </div>
   <div class="h-screen grid place-items-center">
     <div id="test-card" class="bg-neutral-800 p-4 rounded-md w-[50%] block">
       <div class="grid grid-rows-[max-content_max-content] gap-4">
