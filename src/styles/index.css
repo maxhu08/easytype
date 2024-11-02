@@ -1,0 +1,26 @@
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap");
+
+* {
+  transition-duration: 250ms;
+}
+
+.font-jetbrains-mono {
+  font-family: "Jetbrains Mono", monospace;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #00000000;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 2008px;
+  background: #10b981;
+}
+
+::selection {
+  background-color: #ffffff20;
+}

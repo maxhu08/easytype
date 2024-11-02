@@ -4,6 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="styles/index.css">
   <link rel="stylesheet" type="text/css" href="styles/tailwind.css">
   <script src="scripts/init.ts" type="module" defer></script>
   <title>Hello World!</title>
@@ -13,11 +14,12 @@
   <div class="h-screen grid place-items-center">
     <div class="bg-neutral-800 grid grid-rows-[max-content_max-content] gap-4 p-4 rounded-md w-[50%]">
       <div class="bg-neutral-900 rounded-md p-2">
-        <p id="test-text" class="text-white text-4xl"></p>
+        <p id="test-text" class="font-jetbrains-mono text-white text-4xl"></p>
       </div>
       <div id="test-input-container"
-        class="text-white text-4xl w-full rounded-md overflow-hidden border-2 border-transparent">
-        <input id="test-input" class="bg-neutral-900 outline-none w-full p-2" type="text">
+        class="font-jetbrains-mono text-white text-4xl w-full rounded-md overflow-hidden border-2 border-transparent">
+        <input id="test-input" class="bg-neutral-900 outline-none w-full p-2" type="text" autocomplete="off"
+          autocapitalize="off">
       </div>
     </div>
   </div>

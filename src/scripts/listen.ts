@@ -1,5 +1,5 @@
 import { testInput } from "./ui";
-import { focusTestInput, unfocusTestInput } from "./input";
+import { focusTestInput, tryFocusTestInput, unfocusTestInput } from "./input";
 
 export const listenToEvents = () => {
   testInput.addEventListener("blur", () => {
@@ -8,4 +8,8 @@ export const listenToEvents = () => {
   });
 
   testInput.addEventListener("focus", (e) => focusTestInput(e));
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === " ") tryFocusTestInput(e);
+  });
 };
