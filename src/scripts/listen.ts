@@ -9,6 +9,8 @@ import { startTimer } from "./utils/start-timer";
 import { getWordIndex, setWordIndex } from "./utils/word-index";
 
 export const listenToEvents = (testInfo: TestInfo) => {
+  listenGlobalKeys();
+
   listenFocusTestInput();
   listenUnfocusTestInput();
 
@@ -28,19 +30,13 @@ const listenFocusTestInput = () => {
 };
 
 const listenCompleteWord = (totalWords: number) => {
-  document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape") {
-      unfocusTestInput();
-      unfocusRestartButton();
-    }
-
+  testInput.addEventListener("keydown", (e) => {
     if (e.key === "Tab") {
       tryFocusRestartButton(e);
     }
 
     if (e.key === " " && getCurrentState() === "in-progress") {
       e.preventDefault();
-      tryFocusTestInput(e);
       let wordIndex = getWordIndex();
 
       const wordSpanEl = document.getElementById(`w-${wordIndex}`) as HTMLSpanElement;
@@ -83,5 +79,16 @@ const listenCharInput = (totalWords: number) => {
     else currWordSpanEl.classList.replace("bg-rose-500", "bg-neutral-500");
 
     if (wordIndex === totalWords - 1 && testInput.value === currWordSpanEl.textContent) finishTest();
+  });
+};
+
+export const listenGlobalKeys = () => {
+  document.addEventListener("keydown", (e) => {
+    if (e.key === " ") tryFocusTestInput(e);
+
+    if (e.key === "Escape") {
+      unfocusTestInput();
+      unfocusRestartButton();
+    }
   });
 };
