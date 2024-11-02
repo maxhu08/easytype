@@ -1,6 +1,6 @@
 @font-face {
   font-family: "Jetbrains Mono";
-  src: url("../assets/fonts/JetBrainsMonoNerdFontMono-Regular.ttf") format("truetype");
+  src: url("../assets/fonts/JetBrainsMonoNL-Regular.ttf") format("truetype");
 }
 
 *:not(span) {
