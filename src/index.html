@@ -30,7 +30,15 @@
       </div>
     </div>
     <div id="results-card" class="bg-neutral-800 p-4 rounded-md w-[50%] hidden">
-      <p class="font-jetbrains-mono text-white text-4xl leading-[3rem]">Test completed!</p>
+      <div class="grid grid-rows-[max-content_max-content]">
+        <p class="font-jetbrains-mono text-white text-4xl leading-[3rem] text-center">Test completed!</p>
+        <div class="grid place-items-center py-10">
+          <button id="restart-test-button"
+            class="bg-emerald-500 hover:bg-emerald-600 transition p-2 rounded-md cursor-pointer">
+            <span class="font-jetbrains-mono text-white text-4xl">restart test</span>
+          </button>
+        </div>
+      </div>
     </div>
   </div>
 </body>

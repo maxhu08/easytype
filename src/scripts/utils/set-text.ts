@@ -2,6 +2,7 @@ import english from "../../languages/english";
 import { testText } from "../ui";
 
 export const setTest = () => {
+  testText.textContent = "";
   let testContent = "";
 
   for (let i = 0; i < 20; i++) {
