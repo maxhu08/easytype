@@ -1,6 +1,5 @@
+import type { CurrentState } from "../types";
 import { testText } from "../ui";
-
-type CurrentState = "in-progress" | "finished";
 
 export const getCurrentState = () => {
   return testText.getAttribute("current-state") as CurrentState;

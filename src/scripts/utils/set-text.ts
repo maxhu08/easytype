@@ -1,7 +1,7 @@
 import english from "../../languages/english";
+import type { TestInfo } from "../types";
 import { testText } from "../ui";
 import { setCurrentState } from "./current-state";
-import type { TestInfo } from "./set-test-info";
 
 export const setTest = ({ words }: TestInfo) => {
   testText.textContent = "";

@@ -1,6 +1,7 @@
+import type { TestInfo } from "../types";
 import { resultsCard, testCard, testInput } from "../ui";
 import { tryFocusTestInput } from "./input";
-import { setTestInfo, type TestInfo } from "./set-test-info";
+import { setTestInfo } from "./set-test-info";
 import { setTest } from "./set-text";
 import { resetTimer, stopTimer } from "./start-timer";
 import { setWordIndex } from "./word-index";

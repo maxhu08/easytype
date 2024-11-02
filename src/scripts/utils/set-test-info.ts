@@ -1,8 +1,5 @@
+import type { TestInfo } from "../types";
 import { testText } from "../ui";
-
-export interface TestInfo {
-  words: number;
-}
 
 export const setTestInfo = (test: TestInfo) => {
   testText.setAttribute("test-info", JSON.stringify(test));

@@ -1,9 +1,9 @@
+import type { TestInfo } from "./types";
 import { testInput } from "./ui";
 import { getCurrentState } from "./utils/current-state";
 import { finishTest } from "./utils/finish-test";
 import { focusTestInput, tryFocusTestInput, unfocusTestInput } from "./utils/input";
 import { tryFocusRestartButton, unfocusRestartButton } from "./utils/restart-button";
-import { type TestInfo } from "./utils/set-test-info";
 import { setTestStartTime } from "./utils/set-time";
 import { startTimer } from "./utils/start-timer";
 import { getWordIndex, setWordIndex } from "./utils/word-index";
