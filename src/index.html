@@ -12,12 +12,14 @@
 </head>
 
 <body class="bg-neutral-900 min-h-screen" dir="ltr">
-  <div class="fixed grid grid-cols-[max-content_auto] place-items-center gap-2 top-2 left-2">
-    <img src="assets/logo.png" class="w-12 h-12" />
-    <span class="font-jetbrains-mono text-neutral-500 text-4xl font-semibold">easytype</span>
-  </div>
+  <a href="/" class="cursor-pointer">
+    <div class="fixed grid grid-cols-[max-content_auto] place-items-center gap-2 top-2 left-4">
+      <img src="assets/logo.png" class="w-12 h-12" />
+      <span class="font-jetbrains-mono text-neutral-500 text-4xl font-semibold">easytype</span>
+    </div>
+  </a>
   <div class="h-screen grid place-items-center">
-    <div id="test-card" class="bg-neutral-800 p-4 rounded-md w-[50%] block">
+    <div id="test-card" class="bg-neutral-800 p-4 rounded-md w-[95%] md:w-[75%] xl:w-[50%] block">
       <div class="grid grid-rows-[max-content_max-content] gap-4">
         <div class="bg-neutral-900 rounded-md p-4">
           <p id="test-text" class="font-jetbrains-mono text-white text-4xl leading-[3rem]" word-index="0"
@@ -30,7 +32,7 @@
         </div>
       </div>
     </div>
-    <div id="results-card" class="bg-neutral-800 p-4 rounded-md w-[50%] hidden">
+    <div id="results-card" class="bg-neutral-800 p-4 rounded-md w-[95%] md:w-[75%] xl:w-[50%] hidden">
       <div class="grid grid-rows-[max-content_max-content]">
         <p class="font-jetbrains-mono text-white text-4xl leading-[3rem] text-center">Test completed!</p>
         <div class="grid place-items-center py-10">
