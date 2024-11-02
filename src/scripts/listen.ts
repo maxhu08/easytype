@@ -1,4 +1,4 @@
-import { testInput } from "./ui";
+import { resultsCard, testCard, testInput } from "./ui";
 import { focusTestInput, tryFocusTestInput, unfocusTestInput } from "./input";
 import { getWordIndex, setWordIndex } from "./utils";
 
@@ -37,13 +37,18 @@ const listenCompleteWord = () => {
         prevWordSpanEl.classList.remove("bg-neutral-500", "text-white");
         prevWordSpanEl.classList.add("text-emerald-500");
 
-        setWordIndex(wordIndex + 1);
-        wordIndex = getWordIndex();
+        wordIndex += 1;
+        setWordIndex(wordIndex);
 
-        const currWordSpanEl = document.getElementById(`w-${wordIndex}`) as HTMLSpanElement;
-        currWordSpanEl.classList.add("bg-neutral-500", "rounded-md");
+        if (wordIndex === 20) {
+          testCard.classList.replace("block", "hidden");
+          resultsCard.classList.replace("hidden", "block");
+        } else {
+          const currWordSpanEl = document.getElementById(`w-${wordIndex}`) as HTMLSpanElement;
+          currWordSpanEl.classList.add("bg-neutral-500", "rounded-md");
 
-        testInput.value = "";
+          testInput.value = "";
+        }
       }
     }
   });

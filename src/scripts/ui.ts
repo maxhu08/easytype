@@ -1,3 +1,6 @@
+export const testCard = document.getElementById("test-card") as HTMLDivElement;
+export const resultsCard = document.getElementById("results-card") as HTMLDivElement;
+
 export const testText = document.getElementById("test-text") as HTMLParagraphElement;
 export const testInput = document.getElementById("test-input") as HTMLInputElement;
 export const testInputContainer = document.getElementById("test-input-container") as HTMLDivElement;
