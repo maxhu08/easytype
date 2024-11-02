@@ -1,31 +1,5 @@
-# simple-parcel-template
+# easytype
 
-simple template that uses parcel and has hot module reloading, typescript, and tailwind setup
+a simple and minimal typing test website
 
-## getting started
-
-run these commands:
-
-```shell
-# clone
-git clone https://github.com/maxhu08/simple-parcel-template.git
-cd simple-parcel-template
-
-# remove git info
-rm -rf .git
-
-# install dependencies
-bun i
-```
-
-to run:
-
-```shell
-# development mode
-bun dev
-
-# production mode
-bun build
-```
-
-then go to the link it gives, which will probably be `localhost:1234`
+try it out [here](https://easytype.vercel.app/)
