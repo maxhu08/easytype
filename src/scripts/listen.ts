@@ -3,6 +3,7 @@ import { getCurrentState } from "./utils/current-state";
 import { finishTest } from "./utils/finish-test";
 import { focusTestInput, tryFocusTestInput, unfocusTestInput } from "./utils/input";
 import { tryFocusRestartButton, unfocusRestartButton } from "./utils/restart-button";
+import { setTestStartTime } from "./utils/set-time";
 import { startTimer } from "./utils/start-timer";
 import { getWordIndex, setWordIndex } from "./utils/word-index";
 
@@ -69,7 +70,11 @@ const listenCharInput = () => {
     const wordIndex = getWordIndex();
     const currWordSpanEl = document.getElementById(`w-${wordIndex}`) as HTMLSpanElement;
 
-    if (wordIndex === 0 && testInput.value.length === 1) startTimer();
+    // user starts typing
+    if (wordIndex === 0 && testInput.value.length === 1) {
+      setTestStartTime(Date.now());
+      startTimer();
+    }
 
     const correctSoFar = currWordSpanEl.textContent?.startsWith(testInput.value);
 

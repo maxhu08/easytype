@@ -6,7 +6,9 @@ import { setWordIndex } from "./word-index";
 
 export const handleStartTest = () => {
   setTest();
+
   setWordIndex(0);
+
   testInput.value = "";
   stopTimer();
   resetTimer();
