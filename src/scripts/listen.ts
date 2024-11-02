@@ -3,16 +3,17 @@ import { getCurrentState } from "./utils/current-state";
 import { finishTest } from "./utils/finish-test";
 import { focusTestInput, tryFocusTestInput, unfocusTestInput } from "./utils/input";
 import { tryFocusRestartButton, unfocusRestartButton } from "./utils/restart-button";
+import { type TestInfo } from "./utils/set-test-info";
 import { setTestStartTime } from "./utils/set-time";
 import { startTimer } from "./utils/start-timer";
 import { getWordIndex, setWordIndex } from "./utils/word-index";
 
-export const listenToEvents = () => {
+export const listenToEvents = (testInfo: TestInfo) => {
   listenFocusTestInput();
   listenUnfocusTestInput();
 
-  listenCompleteWord();
-  listenCharInput();
+  listenCompleteWord(testInfo.words);
+  listenCharInput(testInfo.words);
 };
 
 const listenUnfocusTestInput = () => {
@@ -26,7 +27,7 @@ const listenFocusTestInput = () => {
   testInput.addEventListener("focus", (e) => focusTestInput(e));
 };
 
-const listenCompleteWord = () => {
+const listenCompleteWord = (totalWords: number) => {
   document.addEventListener("keydown", (e) => {
     if (e.key === "Escape") {
       unfocusTestInput();
@@ -53,7 +54,7 @@ const listenCompleteWord = () => {
         wordIndex += 1;
         setWordIndex(wordIndex);
 
-        if (wordIndex === 20) {
+        if (wordIndex === totalWords) {
           finishTest();
         } else {
           const currWordSpanEl = document.getElementById(`w-${wordIndex}`) as HTMLSpanElement;
@@ -65,7 +66,7 @@ const listenCompleteWord = () => {
   });
 };
 
-const listenCharInput = () => {
+const listenCharInput = (totalWords: number) => {
   testInput.addEventListener("input", () => {
     const wordIndex = getWordIndex();
     const currWordSpanEl = document.getElementById(`w-${wordIndex}`) as HTMLSpanElement;
@@ -81,6 +82,6 @@ const listenCharInput = () => {
     if (!correctSoFar) currWordSpanEl.classList.replace("bg-neutral-500", "bg-rose-500");
     else currWordSpanEl.classList.replace("bg-rose-500", "bg-neutral-500");
 
-    if (wordIndex === 19 && testInput.value === currWordSpanEl.textContent) finishTest();
+    if (wordIndex === totalWords - 1 && testInput.value === currWordSpanEl.textContent) finishTest();
   });
 };

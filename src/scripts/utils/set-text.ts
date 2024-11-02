@@ -1,13 +1,14 @@
 import english from "../../languages/english";
 import { testText } from "../ui";
 import { setCurrentState } from "./current-state";
+import type { TestInfo } from "./set-test-info";
 
-export const setTest = () => {
+export const setTest = ({ words }: TestInfo) => {
   testText.textContent = "";
-  let testContent = "";
+
   setCurrentState("in-progress");
 
-  for (let i = 0; i < 20; i++) {
+  for (let i = 0; i < words; i++) {
     const word = english.words[Math.floor(Math.random() * english.words.length)];
     const span = document.createElement("span");
     span.id = `w-${i}`;
@@ -15,7 +16,7 @@ export const setTest = () => {
 
     testText.appendChild(span);
 
-    if (i !== 19) testText.appendChild(document.createTextNode(" "));
+    if (i !== words - 1) testText.appendChild(document.createTextNode(" "));
   }
 
   (document.getElementById(`w-${0}`) as HTMLSpanElement).classList.add("bg-neutral-500", "rounded-md");

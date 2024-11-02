@@ -1,6 +1,7 @@
 import { resultsCard, testCard, wpmText } from "../ui";
 import { setCurrentState } from "./current-state";
 import { formatTime } from "./format";
+import { getTestInfo } from "./set-test-info";
 import { setTestEndTime, getTestStartTime, getTestEndTime } from "./set-time";
 import { stopTimer } from "./start-timer";
 
@@ -14,8 +15,10 @@ export const finishTest = () => {
 
   stopTimer();
 
+  const testInfo = getTestInfo();
+
   const timeAsMinutes = (getTestEndTime() - getTestStartTime()) / 60000;
-  const wpm = 20 / timeAsMinutes;
+  const wpm = testInfo.words / timeAsMinutes;
 
   wpmText.textContent = wpm.toFixed() + " wpm";
 };
