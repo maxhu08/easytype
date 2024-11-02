@@ -18,7 +18,7 @@ export const finishTest = () => {
   const testInfo = getTestInfo();
 
   const timeAsMinutes = (getTestEndTime() - getTestStartTime()) / 60000;
-  const wpm = testInfo.words / timeAsMinutes;
+  const wpm = Math.floor(testInfo.words / timeAsMinutes);
 
-  wpmText.textContent = wpm.toFixed() + " wpm";
+  wpmText.textContent = " wpm";
 };

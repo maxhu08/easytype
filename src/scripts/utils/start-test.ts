@@ -7,7 +7,7 @@ import { setWordIndex } from "./word-index";
 
 export const handleStartTest = () => {
   const testInfo: TestInfo = {
-    words: 5
+    words: 20
   };
 
   setTestInfo(testInfo);
