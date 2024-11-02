@@ -4,7 +4,8 @@
   "keywords": [],
   "scripts": {
     "dev": "parcel src/*.html",
-    "build": "rm -rf dist && parcel build src/*.html"
+    "build": "rm -rf dist && parcel build src/*.html",
+    "prettier": "prettier --write \"./**/*.{js,jsx,mjs,cjs,ts,tsx,json}\""
   },
   "devDependencies": {
     "@types/bun": "latest",

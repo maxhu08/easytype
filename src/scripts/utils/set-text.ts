@@ -18,8 +18,5 @@ export const setTest = () => {
     if (i !== 19) testText.appendChild(document.createTextNode(" "));
   }
 
-  (document.getElementById(`w-${0}`) as HTMLSpanElement).classList.add(
-    "bg-neutral-500",
-    "rounded-md"
-  );
+  (document.getElementById(`w-${0}`) as HTMLSpanElement).classList.add("bg-neutral-500", "rounded-md");
 };

@@ -5,6 +5,4 @@ export const testText = document.getElementById("test-text") as HTMLParagraphEle
 export const testInput = document.getElementById("test-input") as HTMLInputElement;
 export const testInputContainer = document.getElementById("test-input-container") as HTMLDivElement;
 
-export const restartTestButton = document.getElementById(
-  "restart-test-button"
-) as HTMLButtonElement;
+export const restartTestButton = document.getElementById("restart-test-button") as HTMLButtonElement;
