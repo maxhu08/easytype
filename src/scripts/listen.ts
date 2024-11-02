@@ -1,20 +1,33 @@
 import { testInput } from "./ui";
 import { focusTestInput, tryFocusTestInput, unfocusTestInput } from "./input";
+import { getWordIndex, setWordIndex } from "./utils";
 
 export const listenToEvents = () => {
+  listenFocusTestInput();
+  listenUnfocusTestInput();
+
+  listenCompleteWord();
+  listenCharInput();
+};
+
+const listenUnfocusTestInput = () => {
   testInput.addEventListener("blur", () => {
     // prevent getting unfocused on window unfocus
     if (document.hasFocus()) unfocusTestInput();
   });
+};
 
+const listenFocusTestInput = () => {
   testInput.addEventListener("focus", (e) => focusTestInput(e));
+};
 
-  let wordIndex = 0;
+const listenCompleteWord = () => {
   document.addEventListener("keydown", (e) => {
     if (e.key === "Escape") unfocusTestInput();
     if (e.key === " ") {
       e.preventDefault();
       tryFocusTestInput(e);
+      let wordIndex = getWordIndex();
 
       const wordSpanEl = document.getElementById(`w-${wordIndex}`) as HTMLSpanElement;
 
@@ -24,7 +37,9 @@ export const listenToEvents = () => {
         prevWordSpanEl.classList.remove("bg-neutral-500", "text-white");
         prevWordSpanEl.classList.add("text-emerald-500");
 
-        wordIndex++;
+        setWordIndex(wordIndex + 1);
+        wordIndex = getWordIndex();
+
         const currWordSpanEl = document.getElementById(`w-${wordIndex}`) as HTMLSpanElement;
         currWordSpanEl.classList.add("bg-neutral-500", "rounded-md");
 
@@ -32,12 +47,13 @@ export const listenToEvents = () => {
       }
     }
   });
+};
 
+const listenCharInput = () => {
   testInput.addEventListener("input", () => {
+    const wordIndex = getWordIndex();
     const currWordSpanEl = document.getElementById(`w-${wordIndex}`) as HTMLSpanElement;
     const correctSoFar = currWordSpanEl.textContent?.startsWith(testInput.value);
-
-    console.log(currWordSpanEl.textContent, testInput.value, correctSoFar);
 
     if (!correctSoFar) currWordSpanEl.classList.replace("bg-neutral-500", "bg-rose-500");
     else currWordSpanEl.classList.replace("bg-rose-500", "bg-neutral-500");
