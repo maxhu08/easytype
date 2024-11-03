@@ -44,6 +44,7 @@ const listenCompleteWord = () => {
         const totalWords = getConfig().testInfo.words;
         const isLastWord = wordIndex === totalWords;
 
+        wordSpanEl.classList.add("text-emerald-500");
         setCharsTyped(getCharsTyped() + wordSpanEl.textContent.length + (isLastWord ? 0 : 1));
         wordIndex += 1;
         setWordIndex(wordIndex);
