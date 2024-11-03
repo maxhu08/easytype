@@ -16,7 +16,7 @@ export const saveOptionsToConfig = () => {
     else if (selectedWords.id === "options-words-200-button") draft.testInfo.words = 200;
 
     if (selectedCurrentWordIndicatorAnimations.id === "options-current-word-indicator-animations-on-button") draft.currentWordIndicatorAnimations = "on";
-    else if (selectedCurrentWordIndicatorAnimations.id === "options-current-word-indicator-animations-on-button") draft.currentWordIndicatorAnimations = "off";
+    else if (selectedCurrentWordIndicatorAnimations.id === "options-current-word-indicator-animations-off-button") draft.currentWordIndicatorAnimations = "off";
   });
 
   setConfig(draft);

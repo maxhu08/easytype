@@ -38,10 +38,6 @@ span {
   z-index: 100;
 }
 
-.bouncy-transition {
-  transition: 150ms cubic-bezier(0.25, 1.25, 0.5, 1);
-}
-
 .animate-up-bouncy {
   animation: animateUpBouncy 600ms ease-in-out;
 }
