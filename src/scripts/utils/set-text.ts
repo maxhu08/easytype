@@ -2,7 +2,6 @@ import english from "../../languages/english";
 import type { TestInfo } from "../types";
 import { testText } from "../ui";
 import { setCurrentState } from "./current-state";
-import { alignCurrentWordIndicator } from "./current-word-indicator";
 
 export const setTest = ({ words }: TestInfo) => {
   testText.textContent = "";
@@ -20,7 +19,4 @@ export const setTest = ({ words }: TestInfo) => {
 
     if (i !== words - 1) testText.appendChild(document.createTextNode(" "));
   }
-
-  const firstWordSpan = document.getElementById(`w-${0}`) as HTMLSpanElement;
-  alignCurrentWordIndicator(firstWordSpan);
 };

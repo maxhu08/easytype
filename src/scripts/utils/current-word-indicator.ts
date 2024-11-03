@@ -16,3 +16,11 @@ export const alignCurrentWordIndicator = (wordSpanEl: HTMLSpanElement) => {
 
   console.log({ x, y, w, h });
 };
+
+export const hideCurrentWordIndicator = () => {
+  currentWordIndicator.classList.replace("block", "hidden");
+};
+
+export const showCurrentWordIndicator = () => {
+  currentWordIndicator.classList.replace("hidden", "block");
+};
