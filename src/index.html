@@ -20,12 +20,22 @@
       <span class="font-jetbrains-mono text-neutral-500 text-4xl font-semibold">easytype</span>
     </div>
   </a>
+  <div class="fixed grid grid-flow-row gap-2 top-2 right-4">
+    <a href="https://github.com/maxhu08/easytype" target="_blank" class="ml-auto">
+      <span
+        class="font-jetbrains-mono text-blue-500 hover:text-blue-600 text-4xl duration-200 ease-in-out">github</span>
+    </a>
+    <button class="ml-auto">
+      <span
+        class="font-jetbrains-mono text-neutral-500 hover:text-neutral-600 text-4xl duration-200 ease-in-out">opts</span>
+    </button>
+  </div>
   <div id="current-word-indicator" class="absolute top-0 left-0 bg-neutral-500 rounded-md z-10 bouncy-transition block">
   </div>
   <div class="h-screen grid place-items-center">
     <div class="grid place-items-center grid-flow-row gap-4">
       <span id="test-timer-text" class="font-jetbrains-mono text-neutral-500 text-4xl select-none">00:00.00s</span>
-      <div id="test-card" class="bg-neutral-800 p-4 rounded-md w-[95vw] md:w-[75vw] xl:w-[50vw] block">
+      <div id="test-card" class="bg-neutral-800 p-4 rounded-md w-[95vw] md:w-[75vw] xl:w-[50vw] max-w-[80rem] block">
         <div class="grid grid-rows-[max-content_max-content] gap-4 relative">
           <div class="bg-neutral-900 rounded-md p-4">
             <div class="h-[9rem] overflow-hidden">
@@ -40,7 +50,8 @@
           </div>
         </div>
       </div>
-      <div id="results-card" class="bg-neutral-800 p-4 rounded-md w-[95vw] md:w-[75vw] xl:w-[50vw] hidden">
+      <div id="results-card"
+        class="bg-neutral-800 p-4 rounded-md w-[95vw] md:w-[75vw] xl:w-[50vw] max-w-[80rem] hidden">
         <div class="grid grid-rows-[max-content_max-content]">
           <p class="font-jetbrains-mono text-white text-4xl leading-[3rem] text-center">🎉 test completed 🎉</p>
           <div class="grid grid-cols-2 place-items-center py-10">
