@@ -1,5 +1,5 @@
 import type { TestInfo } from "./types";
-import { currentWordIndicator, testInput } from "./ui";
+import { currentWordIndicator, testInput, testText } from "./ui";
 import { getCurrentState } from "./utils/current-state";
 import { alignCurrentWordIndicator, hideCurrentWordIndicator, showCurrentWordIndicator } from "./utils/current-word-indicator";
 import { finishTest } from "./utils/finish-test";
@@ -32,8 +32,6 @@ const listenFocusTestInput = () => {
 };
 
 const listenCompleteWord = (totalWords: number) => {
-  let lowestWordIndex = 0;
-
   testInput.addEventListener("keydown", (e) => {
     if (e.key === " " && getCurrentState() === "in-progress") {
       e.preventDefault();
@@ -56,11 +54,12 @@ const listenCompleteWord = (totalWords: number) => {
           const movedDown = alignCurrentWordIndicator(currWordSpanEl);
 
           if (wordIndex !== 1 && movedDown) {
-            console.log(wordIndex);
-            for (let i = lowestWordIndex; i < wordIndex; i++) {
-              (document.getElementById(`w-${i}`) as HTMLSpanElement).remove();
+            const prevWordSpanEls = Array.from(testText.querySelectorAll("span"));
+            for (const span of prevWordSpanEls) {
+              if (span === currWordSpanEl) break;
+              span.remove();
             }
-            lowestWordIndex = wordIndex;
+
             alignCurrentWordIndicator(currWordSpanEl);
           }
 
