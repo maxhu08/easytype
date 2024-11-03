@@ -1,5 +1,6 @@
 import type { TestInfo } from "../types";
-import { resultsCard, testCard, testInput } from "../ui";
+import { testCard, testInput } from "../ui";
+import { displayCard } from "./card";
 import { alignCurrentWordIndicator, resetCurrentWordIndicatorColor, showCurrentWordIndicator } from "./current-word-indicator";
 import { tryFocusTestInput } from "./input";
 import { setCharsTyped, setTestInfo, setWordIndex } from "./set-test-info";
@@ -21,8 +22,7 @@ export const handleStartTest = () => {
   stopTimer();
   resetTimer();
 
-  testCard.classList.replace("hidden", "block");
-  resultsCard.classList.replace("block", "hidden");
+  displayCard(testCard);
 
   const firstWordSpan = document.getElementById(`w-${0}`) as HTMLSpanElement;
   alignCurrentWordIndicator(firstWordSpan);

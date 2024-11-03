@@ -1,4 +1,5 @@
-import { charsText, resultsCard, testCard, wordsText, wpmText } from "../ui";
+import { charsText, resultsCard, wordsText, wpmText } from "../ui";
+import { displayCard } from "./card";
 import { setCurrentState } from "./current-state";
 import { hideCurrentWordIndicator } from "./current-word-indicator";
 import { getCharsTyped, getTestEndTime, getTestInfo, getTestStartTime, setTestEndTime } from "./set-test-info";
@@ -10,8 +11,7 @@ export const finishTest = () => {
   setCurrentState("finished");
 
   hideCurrentWordIndicator();
-  testCard.classList.replace("block", "hidden");
-  resultsCard.classList.replace("hidden", "block");
+  displayCard(resultsCard);
 
   stopTimer();
 

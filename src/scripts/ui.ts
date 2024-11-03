@@ -1,5 +1,6 @@
 export const testCard = document.getElementById("test-card") as HTMLDivElement;
 export const resultsCard = document.getElementById("results-card") as HTMLDivElement;
+export const optionsCard = document.getElementById("options-card") as HTMLDivElement;
 
 export const testText = document.getElementById("test-text") as HTMLParagraphElement;
 export const testInput = document.getElementById("test-input") as HTMLInputElement;
@@ -12,3 +13,5 @@ export const wordsText = document.getElementById("words-text") as HTMLSpanElemen
 export const charsText = document.getElementById("chars-text") as HTMLSpanElement;
 
 export const restartTestButton = document.getElementById("restart-test-button") as HTMLButtonElement;
+export const optionsButton = document.getElementById("options-button") as HTMLButtonElement;
+export const optionsDoneButton = document.getElementById("options-done-button") as HTMLButtonElement;

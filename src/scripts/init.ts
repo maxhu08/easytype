@@ -1,5 +1,6 @@
 import { listenToEvents } from "./listen";
-import { restartTestButton } from "./ui";
+import { optionsButton, optionsDoneButton, restartTestButton } from "./ui";
+import { closeOptions, openOptions } from "./utils/open-options";
 import { getTestInfo } from "./utils/set-test-info";
 import { handleStartTest } from "./utils/start-test";
 
@@ -8,3 +9,5 @@ const testInfo = getTestInfo();
 listenToEvents(testInfo);
 
 restartTestButton.onclick = () => handleStartTest();
+optionsButton.onclick = () => openOptions();
+optionsDoneButton.onclick = () => closeOptions();
