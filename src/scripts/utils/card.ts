@@ -13,6 +13,6 @@ export const displayCard = (cardEl: HTMLDivElement) => {
 
     setTimeout(() => {
       resolve();
-    }, 950);
+    }, 500);
   });
 };
