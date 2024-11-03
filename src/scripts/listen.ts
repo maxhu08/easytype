@@ -74,6 +74,8 @@ const listenCompleteWord = () => {
 };
 
 const listenCharInput = () => {
+  let startedTyping = false;
+
   testInput.addEventListener("input", () => {
     const wordIndex = getWordIndex();
     const wordSpanEl = document.getElementById(`w-${wordIndex}`) as HTMLSpanElement;
@@ -81,7 +83,10 @@ const listenCharInput = () => {
     // user starts typing
     if (wordIndex === 0 && testInput.value.length === 1) {
       setTestStartTime(Date.now());
-      startTimer();
+      if (!startedTyping) {
+        startTimer();
+        startedTyping = true;
+      }
     }
 
     const correctSoFar = wordSpanEl.textContent?.startsWith(testInput.value);
