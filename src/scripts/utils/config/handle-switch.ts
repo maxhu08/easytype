@@ -16,9 +16,7 @@ export interface ButtonSwitch {
 }
 
 export const handleAllButtonSwitches = () => {
-  buttonSwitches.forEach((btnSwitch) => {
-    switchButtons(btnSwitch.buttons, btnSwitch.attr);
-  });
+  buttonSwitches.forEach((btnSwitch) => switchButtons(btnSwitch.buttons, btnSwitch.attr));
 };
 
 export const buttonSwitches: ButtonSwitch[] = [

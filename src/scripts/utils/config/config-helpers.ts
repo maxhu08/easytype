@@ -1,5 +1,6 @@
 import type { Config } from "../../types";
 import { defaultConfig } from "./default-config";
+import { modifyNestedObject } from "./modify";
 
 export const getConfig = (): Config => {
   const storedConfig = localStorage.getItem("config");
