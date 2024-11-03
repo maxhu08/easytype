@@ -27,7 +27,7 @@
         <div class="grid grid-rows-[max-content_max-content] gap-4">
           <div class="bg-neutral-900 rounded-md p-4">
             <p id="test-text" class="font-jetbrains-mono text-white text-4xl leading-[3rem]" word-index="0"
-              current-state="in-progress" start-time="0" end-time="0" test-info="{}"></p>
+              chars-typed="0" current-state="in-progress" start-time="0" end-time="0" test-info="{}"></p>
           </div>
           <div id="test-input-container"
             class="font-jetbrains-mono text-white text-4xl w-full rounded-md overflow-hidden border-2 border-transparent">
@@ -38,9 +38,17 @@
       </div>
       <div id="results-card" class="bg-neutral-800 p-4 rounded-md w-[95vw] md:w-[75vw] xl:w-[50vw] hidden">
         <div class="grid grid-rows-[max-content_max-content]">
-          <p class="font-jetbrains-mono text-white text-4xl leading-[3rem] text-center">Test completed!</p>
-          <div class="grid place-items-center py-10">
-            <span id="wpm-text" class="font-jetbrains-mono text-emerald-500 text-4xl">wpm</span>
+          <p class="font-jetbrains-mono text-white text-4xl leading-[3rem] text-center">🎉 test completed 🎉</p>
+          <div class="grid grid-cols-2 place-items-center py-10">
+            <div class="grid grid-flow-row">
+              <span class="font-jetbrains-mono text-neutral-500 text-4xl">speed</span>
+              <span id="wpm-text" class="font-jetbrains-mono text-emerald-500 text-4xl">wpm</span>
+            </div>
+            <div class="grid grid-flow-row">
+              <span class="font-jetbrains-mono text-neutral-500 text-4xl">typed</span>
+              <span id="words-text" class="font-jetbrains-mono text-sky-500 text-4xl">words</span>
+              <span id="chars-text" class="font-jetbrains-mono text-sky-500 text-4xl">chars</span>
+            </div>
           </div>
         </div>
       </div>

@@ -1,8 +1,6 @@
-import { resultsCard, testCard, wpmText } from "../ui";
+import { charsText, resultsCard, testCard, wordsText, wpmText } from "../ui";
 import { setCurrentState } from "./current-state";
-import { formatTime } from "./format";
-import { getTestInfo } from "./set-test-info";
-import { setTestEndTime, getTestStartTime, getTestEndTime } from "./set-time";
+import { getCharsTyped, getTestEndTime, getTestInfo, getTestStartTime, setTestEndTime } from "./set-test-info";
 import { stopTimer } from "./start-timer";
 
 export const finishTest = () => {
@@ -16,9 +14,12 @@ export const finishTest = () => {
   stopTimer();
 
   const testInfo = getTestInfo();
+  const charsTyped = getCharsTyped();
 
   const timeAsMinutes = (getTestEndTime() - getTestStartTime()) / 60000;
-  const wpm = Math.floor(testInfo.words / timeAsMinutes);
+  const wpm = Math.floor(charsTyped / (timeAsMinutes * 5));
 
   wpmText.textContent = wpm + " wpm";
+  wordsText.textContent = testInfo.words + " words";
+  charsText.textContent = charsTyped + " chars";
 };

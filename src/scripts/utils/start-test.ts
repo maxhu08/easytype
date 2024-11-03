@@ -1,20 +1,20 @@
 import type { TestInfo } from "../types";
 import { resultsCard, testCard, testInput } from "../ui";
 import { tryFocusTestInput } from "./input";
-import { setTestInfo } from "./set-test-info";
+import { setCharsTyped, setTestInfo, setWordIndex } from "./set-test-info";
 import { setTest } from "./set-text";
 import { resetTimer, stopTimer } from "./start-timer";
-import { setWordIndex } from "./word-index";
 
 export const handleStartTest = () => {
   const testInfo: TestInfo = {
-    words: 20
+    words: 2
   };
 
   setTestInfo(testInfo);
   setTest(testInfo);
 
   setWordIndex(0);
+  setCharsTyped(0);
 
   testInput.value = "";
   stopTimer();

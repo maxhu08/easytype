@@ -4,9 +4,8 @@ import { getCurrentState } from "./utils/current-state";
 import { finishTest } from "./utils/finish-test";
 import { focusTestInput, tryFocusTestInput, unfocusTestInput } from "./utils/input";
 import { tryFocusRestartButton, unfocusRestartButton } from "./utils/restart-button";
-import { setTestStartTime } from "./utils/set-time";
+import { getCharsTyped, getWordIndex, setCharsTyped, setTestStartTime, setWordIndex } from "./utils/set-test-info";
 import { startTimer } from "./utils/start-timer";
-import { getWordIndex, setWordIndex } from "./utils/word-index";
 
 export const listenToEvents = (testInfo: TestInfo) => {
   listenGlobalKeys();
@@ -31,10 +30,6 @@ const listenFocusTestInput = () => {
 
 const listenCompleteWord = (totalWords: number) => {
   testInput.addEventListener("keydown", (e) => {
-    if (e.key === "Tab") {
-      tryFocusRestartButton(e);
-    }
-
     if (e.key === " " && getCurrentState() === "in-progress") {
       e.preventDefault();
       let wordIndex = getWordIndex();
@@ -47,10 +42,13 @@ const listenCompleteWord = (totalWords: number) => {
         prevWordSpanEl.classList.remove("bg-neutral-500", "text-white");
         prevWordSpanEl.classList.add("text-emerald-500");
 
+        const isLastWord = wordIndex === totalWords;
+
+        setCharsTyped(getCharsTyped() + wordSpanEl.textContent.length + (isLastWord ? 0 : 1));
         wordIndex += 1;
         setWordIndex(wordIndex);
 
-        if (wordIndex === totalWords) {
+        if (isLastWord) {
           finishTest();
         } else {
           const currWordSpanEl = document.getElementById(`w-${wordIndex}`) as HTMLSpanElement;
@@ -65,7 +63,7 @@ const listenCompleteWord = (totalWords: number) => {
 const listenCharInput = (totalWords: number) => {
   testInput.addEventListener("input", () => {
     const wordIndex = getWordIndex();
-    const currWordSpanEl = document.getElementById(`w-${wordIndex}`) as HTMLSpanElement;
+    const wordSpanEl = document.getElementById(`w-${wordIndex}`) as HTMLSpanElement;
 
     // user starts typing
     if (wordIndex === 0 && testInput.value.length === 1) {
@@ -73,12 +71,17 @@ const listenCharInput = (totalWords: number) => {
       startTimer();
     }
 
-    const correctSoFar = currWordSpanEl.textContent?.startsWith(testInput.value);
+    const correctSoFar = wordSpanEl.textContent?.startsWith(testInput.value);
 
-    if (!correctSoFar) currWordSpanEl.classList.replace("bg-neutral-500", "bg-rose-500");
-    else currWordSpanEl.classList.replace("bg-rose-500", "bg-neutral-500");
+    if (!correctSoFar) wordSpanEl.classList.replace("bg-neutral-500", "bg-rose-500");
+    else wordSpanEl.classList.replace("bg-rose-500", "bg-neutral-500");
 
-    if (wordIndex === totalWords - 1 && testInput.value === currWordSpanEl.textContent) finishTest();
+    const isLastWord = wordIndex === totalWords - 1;
+
+    if (isLastWord && testInput.value === wordSpanEl.textContent) {
+      setCharsTyped(getCharsTyped() + (wordSpanEl.textContent as string).length + (isLastWord ? 0 : 1));
+      finishTest();
+    }
   });
 };
 
@@ -90,5 +93,7 @@ export const listenGlobalKeys = () => {
       unfocusTestInput();
       unfocusRestartButton();
     }
+
+    if (e.key === "Tab") tryFocusRestartButton(e);
   });
 };

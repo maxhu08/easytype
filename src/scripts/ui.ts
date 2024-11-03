@@ -7,5 +7,7 @@ export const testInputContainer = document.getElementById("test-input-container"
 export const testTimerText = document.getElementById("test-timer-text") as HTMLSpanElement;
 
 export const wpmText = document.getElementById("wpm-text") as HTMLSpanElement;
+export const wordsText = document.getElementById("words-text") as HTMLSpanElement;
+export const charsText = document.getElementById("chars-text") as HTMLSpanElement;
 
 export const restartTestButton = document.getElementById("restart-test-button") as HTMLButtonElement;
