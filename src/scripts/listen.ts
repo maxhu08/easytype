@@ -32,6 +32,8 @@ const listenFocusTestInput = () => {
 };
 
 const listenCompleteWord = (totalWords: number) => {
+  let lowestWordIndex = 0;
+
   testInput.addEventListener("keydown", (e) => {
     if (e.key === " " && getCurrentState() === "in-progress") {
       e.preventDefault();
@@ -51,7 +53,17 @@ const listenCompleteWord = (totalWords: number) => {
         } else {
           const currWordSpanEl = document.getElementById(`w-${wordIndex}`) as HTMLSpanElement;
           showCurrentWordIndicator();
-          alignCurrentWordIndicator(currWordSpanEl);
+          const movedDown = alignCurrentWordIndicator(currWordSpanEl);
+
+          if (wordIndex !== 1 && movedDown) {
+            console.log(wordIndex);
+            for (let i = lowestWordIndex; i < wordIndex; i++) {
+              (document.getElementById(`w-${i}`) as HTMLSpanElement).remove();
+            }
+            lowestWordIndex = wordIndex;
+            alignCurrentWordIndicator(currWordSpanEl);
+          }
+
           testInput.value = "";
         }
       }

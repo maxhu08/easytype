@@ -39,5 +39,5 @@ span {
 }
 
 .bouncy-transition {
-  transition: 250ms cubic-bezier(0.25, 1.25, 0.5, 1);
+  transition: 150ms cubic-bezier(0.25, 1.25, 0.5, 1);
 }

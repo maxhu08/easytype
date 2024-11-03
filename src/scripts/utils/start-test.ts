@@ -8,7 +8,7 @@ import { resetTimer, stopTimer } from "./start-timer";
 
 export const handleStartTest = () => {
   const testInfo: TestInfo = {
-    words: 20
+    words: 100
   };
 
   setTestInfo(testInfo);

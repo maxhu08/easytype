@@ -1,17 +1,20 @@
 import { currentWordIndicator } from "../ui";
 
+let previousY = 0;
+
 export const alignCurrentWordIndicator = (wordSpanEl: HTMLSpanElement) => {
   const rect = wordSpanEl.getBoundingClientRect();
+  const { x, y, width: w, height: h } = rect;
 
-  const x = rect.x;
-  const y = rect.y;
-  const w = rect.width;
-  const h = rect.height;
+  const movedDown = y > previousY;
+  previousY = y;
 
   currentWordIndicator.style.left = `${x}px`;
   currentWordIndicator.style.top = `${y}px`;
   currentWordIndicator.style.width = `${w}px`;
   currentWordIndicator.style.height = `${h}px`;
+
+  return movedDown;
 };
 
 export const hideCurrentWordIndicator = () => {
