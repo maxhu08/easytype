@@ -1,7 +1,7 @@
 import type { TestInfo } from "./types";
 import { currentWordIndicator, testInput, testText } from "./ui";
 import { getConfig } from "./utils/config/config-helpers";
-import { getCurrentState } from "./utils/current-state";
+import { getCurrentState, setCurrentState } from "./utils/current-state";
 import { alignCurrentWordIndicator, hideCurrentWordIndicator, showCurrentWordIndicator } from "./utils/current-word-indicator";
 import { finishTest } from "./utils/finish-test";
 import { focusTestInput, tryFocusTestInput, unfocusTestInput } from "./utils/input";
@@ -74,8 +74,6 @@ const listenCompleteWord = () => {
 };
 
 const listenCharInput = () => {
-  let startedTyping = false;
-
   testInput.addEventListener("input", () => {
     const wordIndex = getWordIndex();
     const wordSpanEl = document.getElementById(`w-${wordIndex}`) as HTMLSpanElement;
@@ -83,9 +81,10 @@ const listenCharInput = () => {
     // user starts typing
     if (wordIndex === 0 && testInput.value.length === 1) {
       setTestStartTime(Date.now());
-      if (!startedTyping) {
+
+      if (getCurrentState() === "not-started") {
         startTimer();
-        startedTyping = true;
+        setCurrentState("in-progress");
       }
     }
 

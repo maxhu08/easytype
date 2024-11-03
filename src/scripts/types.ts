@@ -1,4 +1,4 @@
-export type CurrentState = "in-progress" | "finished";
+export type CurrentState = "not-started" | "in-progress" | "finished";
 
 // config related
 

@@ -1,6 +1,7 @@
 import { testCard, testInput } from "../ui";
 import { displayCard } from "./card";
 import { getConfig } from "./config/config-helpers";
+import { setCurrentState } from "./current-state";
 import { alignCurrentWordIndicator, resetCurrentWordIndicatorColor, showCurrentWordIndicator } from "./current-word-indicator";
 import { tryFocusTestInput } from "./input";
 import { insertCSS } from "./manipulate-css";
@@ -23,6 +24,7 @@ export const handleStartTest = () => {
   testInput.value = "";
   stopTimer();
   resetTimer();
+  setCurrentState("not-started");
 
   const testCardShown = testCard.classList.contains("block");
 
