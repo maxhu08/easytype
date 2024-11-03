@@ -1,5 +1,6 @@
 import type { TestInfo } from "./types";
 import { currentWordIndicator, testInput, testText } from "./ui";
+import { getConfig } from "./utils/config/config-helpers";
 import { getCurrentState } from "./utils/current-state";
 import { alignCurrentWordIndicator, hideCurrentWordIndicator, showCurrentWordIndicator } from "./utils/current-word-indicator";
 import { finishTest } from "./utils/finish-test";
@@ -8,14 +9,14 @@ import { tryFocusRestartButton, unfocusRestartButton } from "./utils/restart-but
 import { getCharsTyped, getWordIndex, setCharsTyped, setTestStartTime, setWordIndex } from "./utils/set-test-info";
 import { startTimer } from "./utils/start-timer";
 
-export const listenToEvents = (testInfo: TestInfo) => {
+export const listenToEvents = () => {
   listenGlobalKeys();
 
   listenFocusTestInput();
   listenUnfocusTestInput();
 
-  listenCompleteWord(testInfo.words);
-  listenCharInput(testInfo.words);
+  listenCompleteWord();
+  listenCharInput();
 
   realignCurrentWordIndicatorOnResize();
 };
@@ -31,7 +32,7 @@ const listenFocusTestInput = () => {
   testInput.addEventListener("focus", (e) => focusTestInput(e));
 };
 
-const listenCompleteWord = (totalWords: number) => {
+const listenCompleteWord = () => {
   testInput.addEventListener("keydown", (e) => {
     if (e.key === " " && getCurrentState() === "in-progress") {
       e.preventDefault();
@@ -40,6 +41,7 @@ const listenCompleteWord = (totalWords: number) => {
       const wordSpanEl = document.getElementById(`w-${wordIndex}`) as HTMLSpanElement;
 
       if (testInput.value === wordSpanEl.textContent) {
+        const totalWords = getConfig().testInfo.words;
         const isLastWord = wordIndex === totalWords;
 
         setCharsTyped(getCharsTyped() + wordSpanEl.textContent.length + (isLastWord ? 0 : 1));
@@ -70,7 +72,7 @@ const listenCompleteWord = (totalWords: number) => {
   });
 };
 
-const listenCharInput = (totalWords: number) => {
+const listenCharInput = () => {
   testInput.addEventListener("input", () => {
     const wordIndex = getWordIndex();
     const wordSpanEl = document.getElementById(`w-${wordIndex}`) as HTMLSpanElement;
@@ -86,6 +88,7 @@ const listenCharInput = (totalWords: number) => {
     if (!correctSoFar) currentWordIndicator.classList.replace("bg-neutral-500", "bg-rose-500");
     else currentWordIndicator.classList.replace("bg-rose-500", "bg-neutral-500");
 
+    const totalWords = getConfig().testInfo.words;
     const isLastWord = wordIndex === totalWords - 1;
 
     if (isLastWord && testInput.value === wordSpanEl.textContent) {
