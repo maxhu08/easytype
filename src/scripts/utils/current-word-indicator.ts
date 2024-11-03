@@ -23,5 +23,5 @@ export const showCurrentWordIndicator = () => {
 };
 
 export const resetCurrentWordIndicatorColor = () => {
-  currentWordIndicator.classList.replace("bg-rose-500", "bg-neutral500");
+  currentWordIndicator.classList.replace("bg-rose-500", "bg-neutral-500");
 };
