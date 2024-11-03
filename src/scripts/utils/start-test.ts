@@ -1,6 +1,6 @@
 import { testCard, testInput } from "../ui";
 import { displayCard } from "./card";
-import { getConfig } from "./config-helpers";
+import { getConfig } from "./config/config-helpers";
 import { alignCurrentWordIndicator, resetCurrentWordIndicatorColor, showCurrentWordIndicator } from "./current-word-indicator";
 import { tryFocusTestInput } from "./input";
 import { setCharsTyped, setTestInfo, setWordIndex } from "./set-test-info";
