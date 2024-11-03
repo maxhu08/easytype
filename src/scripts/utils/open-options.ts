@@ -12,6 +12,5 @@ export const openOptions = () => {
 };
 
 export const closeOptions = () => {
-  displayCard(testCard);
   handleStartTest();
 };

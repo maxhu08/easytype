@@ -22,8 +22,16 @@ export const handleStartTest = () => {
   stopTimer();
   resetTimer();
 
-  displayCard(testCard);
+  const testCardShown = testCard.classList.contains("block");
 
+  if (!testCardShown) {
+    displayCard(testCard).then(() => {
+      handleTestCardAlreadyShown();
+    });
+  } else handleTestCardAlreadyShown();
+};
+
+const handleTestCardAlreadyShown = () => {
   const firstWordSpan = document.getElementById(`w-${0}`) as HTMLSpanElement;
   alignCurrentWordIndicator(firstWordSpan);
   resetCurrentWordIndicatorColor();
