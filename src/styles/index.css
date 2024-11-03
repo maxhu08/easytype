@@ -32,3 +32,12 @@ span {
 ::selection {
   background-color: #ffffff20;
 }
+
+#test-text span {
+  position: relative;
+  z-index: 100;
+}
+
+.bouncy-transition {
+  transition: 250ms cubic-bezier(0.25, 1.25, 0.5, 1);
+}

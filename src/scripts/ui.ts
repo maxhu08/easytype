@@ -5,6 +5,7 @@ export const testText = document.getElementById("test-text") as HTMLParagraphEle
 export const testInput = document.getElementById("test-input") as HTMLInputElement;
 export const testInputContainer = document.getElementById("test-input-container") as HTMLDivElement;
 export const testTimerText = document.getElementById("test-timer-text") as HTMLSpanElement;
+export const currentWordIndicator = document.getElementById("current-word-indicator") as HTMLDivElement;
 
 export const wpmText = document.getElementById("wpm-text") as HTMLSpanElement;
 export const wordsText = document.getElementById("words-text") as HTMLSpanElement;

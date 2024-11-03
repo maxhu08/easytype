@@ -1,6 +1,7 @@
 import type { TestInfo } from "./types";
-import { testInput } from "./ui";
+import { currentWordIndicator, testInput } from "./ui";
 import { getCurrentState } from "./utils/current-state";
+import { alignCurrentWordIndicator } from "./utils/current-word-indicator";
 import { finishTest } from "./utils/finish-test";
 import { focusTestInput, tryFocusTestInput, unfocusTestInput } from "./utils/input";
 import { tryFocusRestartButton, unfocusRestartButton } from "./utils/restart-button";
@@ -39,9 +40,6 @@ const listenCompleteWord = (totalWords: number) => {
       if (testInput.value === wordSpanEl.textContent) {
         const prevWordSpanEl = document.getElementById(`w-${wordIndex}`) as HTMLSpanElement;
 
-        prevWordSpanEl.classList.remove("bg-neutral-500", "text-white");
-        prevWordSpanEl.classList.add("text-emerald-500");
-
         const isLastWord = wordIndex === totalWords;
 
         setCharsTyped(getCharsTyped() + wordSpanEl.textContent.length + (isLastWord ? 0 : 1));
@@ -52,7 +50,7 @@ const listenCompleteWord = (totalWords: number) => {
           finishTest();
         } else {
           const currWordSpanEl = document.getElementById(`w-${wordIndex}`) as HTMLSpanElement;
-          currWordSpanEl.classList.add("bg-neutral-500", "rounded-md");
+          alignCurrentWordIndicator(currWordSpanEl);
           testInput.value = "";
         }
       }
@@ -73,8 +71,8 @@ const listenCharInput = (totalWords: number) => {
 
     const correctSoFar = wordSpanEl.textContent?.startsWith(testInput.value);
 
-    if (!correctSoFar) wordSpanEl.classList.replace("bg-neutral-500", "bg-rose-500");
-    else wordSpanEl.classList.replace("bg-rose-500", "bg-neutral-500");
+    if (!correctSoFar) currentWordIndicator.classList.replace("bg-neutral-500", "bg-rose-500");
+    else currentWordIndicator.classList.replace("bg-rose-500", "bg-neutral-500");
 
     const isLastWord = wordIndex === totalWords - 1;
 
