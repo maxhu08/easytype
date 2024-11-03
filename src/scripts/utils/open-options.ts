@@ -1,6 +1,6 @@
-import { optionsCard, testCard } from "../ui";
+import { optionsCard } from "../ui";
 import { displayCard } from "./card";
-import { hideCurrentWordIndicator, showCurrentWordIndicator } from "./current-word-indicator";
+import { hideCurrentWordIndicator } from "./current-word-indicator";
 import { handleStartTest } from "./start-test";
 import { resetTimer, stopTimer } from "./start-timer";
 
