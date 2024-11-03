@@ -8,13 +8,10 @@ export const alignCurrentWordIndicator = (wordSpanEl: HTMLSpanElement) => {
   const w = rect.width;
   const h = rect.height;
 
-  currentWordIndicator.style.position = "absolute";
   currentWordIndicator.style.left = `${x}px`;
   currentWordIndicator.style.top = `${y}px`;
   currentWordIndicator.style.width = `${w}px`;
   currentWordIndicator.style.height = `${h}px`;
-
-  console.log({ x, y, w, h });
 };
 
 export const hideCurrentWordIndicator = () => {
@@ -23,4 +20,8 @@ export const hideCurrentWordIndicator = () => {
 
 export const showCurrentWordIndicator = () => {
   currentWordIndicator.classList.replace("hidden", "block");
+};
+
+export const resetCurrentWordIndicatorColor = () => {
+  currentWordIndicator.classList.replace("bg-rose-500", "bg-neutral500");
 };

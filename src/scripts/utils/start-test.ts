@@ -1,6 +1,6 @@
 import type { TestInfo } from "../types";
 import { resultsCard, testCard, testInput } from "../ui";
-import { alignCurrentWordIndicator, showCurrentWordIndicator } from "./current-word-indicator";
+import { alignCurrentWordIndicator, resetCurrentWordIndicatorColor, showCurrentWordIndicator } from "./current-word-indicator";
 import { tryFocusTestInput } from "./input";
 import { setCharsTyped, setTestInfo, setWordIndex } from "./set-test-info";
 import { setTest } from "./set-text";
@@ -26,6 +26,7 @@ export const handleStartTest = () => {
 
   const firstWordSpan = document.getElementById(`w-${0}`) as HTMLSpanElement;
   alignCurrentWordIndicator(firstWordSpan);
+  resetCurrentWordIndicatorColor();
   showCurrentWordIndicator();
 
   tryFocusTestInput();
