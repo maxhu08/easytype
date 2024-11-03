@@ -1,7 +1,7 @@
 import type { TestInfo } from "./types";
 import { currentWordIndicator, testInput } from "./ui";
 import { getCurrentState } from "./utils/current-state";
-import { alignCurrentWordIndicator } from "./utils/current-word-indicator";
+import { alignCurrentWordIndicator, hideCurrentWordIndicator, showCurrentWordIndicator } from "./utils/current-word-indicator";
 import { finishTest } from "./utils/finish-test";
 import { focusTestInput, tryFocusTestInput, unfocusTestInput } from "./utils/input";
 import { tryFocusRestartButton, unfocusRestartButton } from "./utils/restart-button";
@@ -16,6 +16,8 @@ export const listenToEvents = (testInfo: TestInfo) => {
 
   listenCompleteWord(testInfo.words);
   listenCharInput(testInfo.words);
+
+  realignCurrentWordIndicatorOnResize();
 };
 
 const listenUnfocusTestInput = () => {
@@ -38,8 +40,6 @@ const listenCompleteWord = (totalWords: number) => {
       const wordSpanEl = document.getElementById(`w-${wordIndex}`) as HTMLSpanElement;
 
       if (testInput.value === wordSpanEl.textContent) {
-        const prevWordSpanEl = document.getElementById(`w-${wordIndex}`) as HTMLSpanElement;
-
         const isLastWord = wordIndex === totalWords;
 
         setCharsTyped(getCharsTyped() + wordSpanEl.textContent.length + (isLastWord ? 0 : 1));
@@ -50,6 +50,7 @@ const listenCompleteWord = (totalWords: number) => {
           finishTest();
         } else {
           const currWordSpanEl = document.getElementById(`w-${wordIndex}`) as HTMLSpanElement;
+          showCurrentWordIndicator();
           alignCurrentWordIndicator(currWordSpanEl);
           testInput.value = "";
         }
@@ -93,5 +94,11 @@ export const listenGlobalKeys = () => {
     }
 
     if (e.key === "Tab") tryFocusRestartButton(e);
+  });
+};
+
+const realignCurrentWordIndicatorOnResize = () => {
+  window.addEventListener("resize", () => {
+    hideCurrentWordIndicator();
   });
 };
