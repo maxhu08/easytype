@@ -2,7 +2,9 @@ export type CurrentState = "in-progress" | "finished";
 
 // config related
 
+export type TestType = "words" | "time" | "quote";
 export interface TestInfo {
+  type: TestType;
   words: number;
 }
 
