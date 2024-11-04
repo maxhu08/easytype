@@ -4,7 +4,7 @@ import { setCurrentState } from "./current-state";
 import { hideCurrentWordIndicator } from "./current-word-indicator";
 import { formatTime } from "./format";
 import { getCharsTyped, getTestEndTime, getTestInfo, getTestStartTime, setTestEndTime } from "./set-test-info";
-import { stopTimer } from "./start-timer";
+import { hideTimer, stopTimer } from "./timer";
 
 export const finishTest = () => {
   setTestEndTime(Date.now());
@@ -15,6 +15,7 @@ export const finishTest = () => {
   displayCard(resultsCard);
 
   stopTimer();
+  hideTimer();
 
   const testInfo = getTestInfo();
   const charsTyped = getCharsTyped();

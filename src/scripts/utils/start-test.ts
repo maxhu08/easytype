@@ -7,7 +7,7 @@ import { tryFocusTestInput } from "./input";
 import { insertCSS } from "./manipulate-css";
 import { setCharsTyped, setTestInfo, setWordIndex } from "./set-test-info";
 import { setTest } from "./set-text";
-import { resetTimer, stopTimer } from "./start-timer";
+import { resetTimer, showTimer, stopTimer } from "./timer";
 
 export const handleStartTest = () => {
   const config = getConfig();
@@ -24,6 +24,7 @@ export const handleStartTest = () => {
   testInput.value = "";
   stopTimer();
   resetTimer();
+  showTimer();
   setCurrentState("not-started");
 
   const testCardShown = testCard.classList.contains("block");

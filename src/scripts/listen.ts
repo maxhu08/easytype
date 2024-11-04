@@ -7,7 +7,7 @@ import { finishTest } from "./utils/finish-test";
 import { focusTestInput, tryFocusTestInput, unfocusTestInput } from "./utils/input";
 import { tryFocusRestartButton, unfocusRestartButton } from "./utils/restart-button";
 import { getCharsTyped, getWordIndex, setCharsTyped, setTestStartTime, setWordIndex } from "./utils/set-test-info";
-import { startTimer } from "./utils/start-timer";
+import { startTimer } from "./utils/timer";
 
 export const listenToEvents = () => {
   listenGlobalKeys();

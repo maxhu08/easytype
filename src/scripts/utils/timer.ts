@@ -19,3 +19,13 @@ export const stopTimer = () => {
 export const resetTimer = () => {
   testTimerText.textContent = "00:00.00s";
 };
+
+export const hideTimer = () => {
+  testTimerText.style.transition = "none"; // no transition
+  testTimerText.style.opacity = "0";
+};
+
+export const showTimer = () => {
+  testTimerText.style.transition = "opacity 1s"; // 2-second transition
+  testTimerText.style.opacity = "1";
+};
