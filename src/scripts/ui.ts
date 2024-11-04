@@ -12,8 +12,10 @@ export const currentWordIndicator = document.getElementById("current-word-indica
 
 // results
 export const wpmText = document.getElementById("wpm-text") as HTMLSpanElement;
+export const testTypeText = document.getElementById("test-type-text") as HTMLSpanElement;
 export const wordsText = document.getElementById("words-text") as HTMLSpanElement;
 export const charsText = document.getElementById("chars-text") as HTMLSpanElement;
+export const timeText = document.getElementById("time-text") as HTMLSpanElement;
 
 // options
 export const optionsTestTypeWordsButton = document.getElementById("options-test-type-words-button") as HTMLButtonElement;
