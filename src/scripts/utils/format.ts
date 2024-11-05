@@ -5,3 +5,7 @@ export const formatTime = (time: number) => {
 
   return `${minutes.toString().padStart(2, "0")}:${seconds.toString().padStart(2, "0")}.${milliseconds.toString().padStart(2, "0")}`;
 };
+
+export const formatTimeShort = (time: number) => {
+  return (time / 1000).toFixed(2);
+};

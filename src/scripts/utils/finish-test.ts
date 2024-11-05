@@ -2,7 +2,7 @@ import { charsText, resultsCard, testTypeText, timeText, wordsText, wpmText } fr
 import { displayCard } from "./card";
 import { setCurrentState } from "./current-state";
 import { hideCurrentWordIndicator } from "./current-word-indicator";
-import { formatTime } from "./format";
+import { formatTimeShort } from "./format";
 import { getCharsTyped, getTestEndTime, getTestInfo, getTestStartTime, setTestEndTime } from "./set-test-info";
 import { hideTimer, stopTimer } from "./timer";
 
@@ -29,5 +29,5 @@ export const finishTest = () => {
 
   wordsText.textContent = testInfo.words + " words";
   charsText.textContent = charsTyped + " chars";
-  timeText.textContent = formatTime(time) + "s";
+  timeText.textContent = formatTimeShort(time) + "s";
 };
