@@ -2,7 +2,11 @@ import { testCard, testInput } from "../ui";
 import { displayCard } from "./card";
 import { getConfig } from "./config/config-helpers";
 import { setCurrentState } from "./current-state";
-import { alignCurrentWordIndicator, resetCurrentWordIndicatorColor, showCurrentWordIndicator } from "./current-word-indicator";
+import {
+  alignCurrentWordIndicator,
+  resetCurrentWordIndicatorColor,
+  showCurrentWordIndicator
+} from "./current-word-indicator";
 import { tryFocusTestInput } from "./input";
 import { insertCSS } from "./manipulate-css";
 import { setCharsTyped, setTestInfo, setWordIndex } from "./set-test-info";
@@ -12,8 +16,13 @@ import { resetTimer, showTimer, stopTimer } from "./timer";
 export const handleStartTest = () => {
   const config = getConfig();
 
-  if (config.currentWordIndicatorAnimations === "on") insertCSS("indicator-styles", ".indicator-animation{transition:150ms cubic-bezier(0.25, 1.25, 0.5, 1);}");
-  else if (config.currentWordIndicatorAnimations === "off") insertCSS("indicator-styles", ".indicator-animation{transition:0s !important;}");
+  if (config.currentWordIndicatorAnimations === "on")
+    insertCSS(
+      "indicator-styles",
+      ".indicator-animation{transition:150ms cubic-bezier(0.25, 1.25, 0.5, 1);}"
+    );
+  else if (config.currentWordIndicatorAnimations === "off")
+    insertCSS("indicator-styles", ".indicator-animation{transition:0s !important;}");
 
   setTestInfo(config.testInfo);
   setTest(config.testInfo);

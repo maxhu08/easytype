@@ -1,146 +1,118 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="simple and minimal typing test" />
+    <meta property="og:image" content="assets/logo.png" />
+    <link rel="stylesheet" type="text/css" href="styles/index.css" />
+    <link rel="stylesheet" type="text/css" href="styles/tailwind.css" />
+    <script src="scripts/init.ts" type="module" defer></script>
+    <link rel="icon" href="assets/logo.png" type="image/x-icon" />
+    <title>easytype</title>
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="simple and minimal typing test">
-  <meta property="og:image" content="assets/logo.png">
-  <link rel="stylesheet" type="text/css" href="styles/index.css">
-  <link rel="stylesheet" type="text/css" href="styles/tailwind.css">
-  <script src="scripts/init.ts" type="module" defer></script>
-  <link rel="icon" href="assets/logo.png" type="image/x-icon">
-  <title>easytype</title>
-</head>
-
-<body class="bg-neutral-900 min-h-screen" dir="ltr">
-  <a href="/" class="cursor-pointer">
-    <div class="fixed grid grid-cols-[max-content_auto] place-items-center gap-2 top-2 left-4">
-      <img src="assets/logo.png" alt="logo" class="w-12 h-12" />
-      <span class="font-jetbrains-mono text-neutral-500 text-4xl font-semibold hidden sm:block">easytype</span>
-    </div>
-  </a>
-  <div class="fixed grid grid-flow-row gap-2 top-2 right-4">
-    <a href="https://github.com/maxhu08/easytype" target="_blank" class="ml-auto cursor-pointer">
-      <span class="font-jetbrains-mono text-blue-500 hover:text-blue-600 text-4xl duration-200 ease-in-out">
-        github
-      </span>
+  <body class="min-h-screen bg-neutral-900" dir="ltr">
+    <a href="/" class="cursor-pointer">
+      <div class="fixed left-4 top-2 grid grid-cols-[max-content_auto] place-items-center gap-2">
+        <img src="assets/logo.png" alt="logo" class="h-12 w-12" />
+        <span class="font-jetbrains-mono hidden text-4xl font-semibold text-neutral-500 sm:block">easytype</span>
+      </div>
     </a>
-    <button id="options-button" class="ml-auto cursor-pointer">
-      <span
-        class="font-jetbrains-mono text-neutral-500 hover:text-neutral-600 text-4xl duration-200 ease-in-out">opts</span>
-    </button>
-  </div>
-  <div id="current-word-indicator"
-    class="absolute top-0 left-0 bg-neutral-500 rounded-md z-10 indicator-animation block">
-  </div>
-  <div class="h-[100svh] grid place-items-center">
-    <div class="grid place-items-center grid-flow-row gap-4">
-      <span id="test-timer-text" class="font-jetbrains-mono text-neutral-500 text-4xl select-none">00:00.00s</span>
-      <div id="test-card" class="bg-neutral-800 p-4 rounded-md w-[95vw] md:w-[75vw] xl:w-[50vw] max-w-[80rem] hidden">
-        <div class="grid grid-rows-[max-content_max-content] gap-4 relative">
-          <div class="bg-neutral-900 rounded-md p-4">
-            <div class="h-[9rem] overflow-hidden">
-              <p id="test-text" class="font-jetbrains-mono text-white text-4xl leading-[3rem] select-none"
-                word-index="0" chars-typed="0" current-state="not-started" start-time="0" end-time="0" test-info="{}">
+    <div class="fixed right-4 top-2 grid grid-flow-row gap-2">
+      <a href="https://github.com/maxhu08/easytype" target="_blank" class="ml-auto cursor-pointer">
+        <span class="font-jetbrains-mono text-4xl text-blue-500 duration-200 ease-in-out hover:text-blue-600"> github </span>
+      </a>
+      <button id="options-button" class="ml-auto cursor-pointer">
+        <span class="font-jetbrains-mono text-4xl text-neutral-500 duration-200 ease-in-out hover:text-neutral-600">opts</span>
+      </button>
+    </div>
+    <div id="current-word-indicator" class="indicator-animation absolute left-0 top-0 z-10 block rounded-md bg-neutral-500"></div>
+    <div class="grid h-[100svh] place-items-center">
+      <div class="grid grid-flow-row place-items-center gap-4">
+        <span id="test-timer-text" class="font-jetbrains-mono select-none text-4xl text-neutral-500">00:00.00s</span>
+        <div id="test-card" class="hidden w-[95vw] max-w-[80rem] rounded-md bg-neutral-800 p-4 md:w-[75vw] xl:w-[50vw]">
+          <div class="relative grid grid-rows-[max-content_max-content] gap-4">
+            <div class="rounded-md bg-neutral-900 p-4">
+              <div class="h-[9rem] overflow-hidden">
+                <p
+                  id="test-text"
+                  class="font-jetbrains-mono select-none text-4xl leading-[3rem] text-white"
+                  word-index="0"
+                  chars-typed="0"
+                  current-state="not-started"
+                  start-time="0"
+                  end-time="0"
+                  test-info="{}"
+                ></p>
+              </div>
+            </div>
+            <div id="test-input-container" class="font-jetbrains-mono w-full overflow-hidden rounded-md border-2 border-transparent text-4xl text-white">
+              <input id="test-input" class="w-full bg-neutral-900 p-2 outline-none" type="text" autocomplete="off" autocapitalize="off" />
+            </div>
+          </div>
+        </div>
+        <div id="results-card" class="hidden w-[95vw] max-w-[80rem] rounded-md bg-neutral-800 p-4 md:w-[75vw] xl:w-[50vw]">
+          <div class="grid grid-rows-[max-content_max-content]">
+            <p class="font-jetbrains-mono text-center text-4xl leading-[3rem] text-white">🎉 test completed 🎉</p>
+            <div class="grid grid-flow-row py-10 sm:grid-cols-2">
+              <p class="font-jetbrains-mono mr-auto text-4xl leading-normal sm:mx-auto">
+                <span class="font-jetbrains-mono text-4xl text-neutral-500">speed</span><br />
+                <span id="wpm-text" class="font-jetbrains-mono text-4xl text-emerald-500">wpm</span><br />
+                <br />
+                <span class="font-jetbrains-mono text-4xl text-neutral-500">test type</span><br />
+                <span id="test-type-text" class="font-jetbrains-mono text-4xl text-neutral-500">test</span>
+              </p>
+              <p class="font-jetbrains-mono mr-auto text-4xl leading-normal sm:mx-auto">
+                <span class="font-jetbrains-mono text-4xl text-neutral-500">typed</span><br />
+                <span id="words-text" class="font-jetbrains-mono text-4xl text-sky-500">words</span><br />
+                <span id="chars-text" class="font-jetbrains-mono text-4xl text-sky-500">chars</span><br />
+                <br />
+                <span class="font-jetbrains-mono text-4xl text-neutral-500">time</span><br />
+                <span id="time-text" class="font-jetbrains-mono text-4xl text-indigo-500">words</span>
               </p>
             </div>
           </div>
-          <div id="test-input-container"
-            class="font-jetbrains-mono text-white text-4xl w-full rounded-md overflow-hidden border-2 border-transparent">
-            <input id="test-input" class="bg-neutral-900 outline-none w-full p-2" type="text" autocomplete="off"
-              autocapitalize="off">
+        </div>
+        <div id="options-card" class="hidden w-[95vw] max-w-[80rem] rounded-md bg-neutral-800 p-4 md:w-[75vw] xl:w-[50vw]">
+          <div class="grid grid-flow-row place-items-center gap-12 py-4">
+            <div class="grid w-full grid-flow-row gap-4">
+              <span class="font-jetbrains-mono ml-1 text-4xl text-neutral-500">test type</span>
+              <div class="grid w-max grid-flow-col gap-4">
+                <button id="options-test-type-words-button" class="font-jetbrains-mono rounded-md p-1 text-4xl text-blue-500 duration-200 ease-in-out hover:bg-blue-500/20">words</button>
+              </div>
+            </div>
+            <div class="grid w-full grid-flow-row gap-4">
+              <span class="font-jetbrains-mono ml-1 text-4xl text-neutral-500">words</span>
+              <div class="flex w-max gap-4">
+                <button id="options-words-10-button" class="font-jetbrains-mono rounded-md p-1 text-4xl text-blue-500 duration-200 ease-in-out hover:bg-blue-500/20">10</button>
+                <button id="options-words-25-button" class="font-jetbrains-mono rounded-md p-1 text-4xl text-blue-500 duration-200 ease-in-out hover:bg-blue-500/20">25</button>
+                <button id="options-words-50-button" class="font-jetbrains-mono rounded-md p-1 text-4xl text-blue-500 duration-200 ease-in-out hover:bg-blue-500/20">50</button>
+                <button id="options-words-100-button" class="font-jetbrains-mono rounded-md p-1 text-4xl text-blue-500 duration-200 ease-in-out hover:bg-blue-500/20">100</button>
+                <button id="options-words-200-button" class="font-jetbrains-mono rounded-md p-1 text-4xl text-blue-500 duration-200 ease-in-out hover:bg-blue-500/20">200</button>
+              </div>
+            </div>
+            <div class="grid w-full grid-flow-row gap-4">
+              <span class="font-jetbrains-mono ml-1 text-4xl text-neutral-500">current word indicator animations</span>
+              <div class="grid w-max grid-flow-col gap-4">
+                <button id="options-current-word-indicator-animations-on-button" class="font-jetbrains-mono rounded-md p-1 text-4xl text-blue-500 duration-200 ease-in-out hover:bg-blue-500/20">
+                  on
+                </button>
+                <button id="options-current-word-indicator-animations-off-button" class="font-jetbrains-mono rounded-md p-1 text-4xl text-blue-500 duration-200 ease-in-out hover:bg-blue-500/20">
+                  off
+                </button>
+              </div>
+            </div>
+            <button id="options-done-button" class="cursor-pointer">
+              <span class="font-jetbrains-mono rounded-md p-1 text-4xl text-blue-500 duration-200 ease-in-out hover:bg-blue-500/20"> done </span>
+            </button>
           </div>
         </div>
-      </div>
-      <div id="results-card"
-        class="bg-neutral-800 p-4 rounded-md w-[95vw] md:w-[75vw] xl:w-[50vw] max-w-[80rem] hidden">
-        <div class="grid grid-rows-[max-content_max-content]">
-          <p class="font-jetbrains-mono text-white text-4xl leading-[3rem] text-center">🎉 test completed 🎉</p>
-          <div class="grid grid-flow-row sm:grid-cols-2 py-10">
-            <p class="mr-auto sm:mx-auto font-jetbrains-mono text-4xl leading-normal">
-              <span class="font-jetbrains-mono text-neutral-500 text-4xl">speed</span><br />
-              <span id="wpm-text" class="font-jetbrains-mono text-emerald-500 text-4xl">wpm</span><br />
-              <br />
-              <span class="font-jetbrains-mono text-neutral-500 text-4xl">test type</span><br />
-              <span id="test-type-text" class="font-jetbrains-mono text-neutral-500 text-4xl">test</span>
-            </p>
-            <p class="mr-auto sm:mx-auto font-jetbrains-mono text-4xl leading-normal">
-              <span class="font-jetbrains-mono text-neutral-500 text-4xl">typed</span><br />
-              <span id="words-text" class="font-jetbrains-mono text-sky-500 text-4xl">words</span><br />
-              <span id="chars-text" class="font-jetbrains-mono text-sky-500 text-4xl">chars</span><br />
-              <br />
-              <span class="font-jetbrains-mono text-neutral-500 text-4xl">time</span><br />
-              <span id="time-text" class="font-jetbrains-mono text-indigo-500 text-4xl">words</span>
-            </p>
-          </div>
-        </div>
-      </div>
-      <div id="options-card"
-        class="bg-neutral-800 p-4 rounded-md w-[95vw] md:w-[75vw] xl:w-[50vw] max-w-[80rem] hidden">
-        <div class="grid grid-flow-row place-items-center py-4 gap-12">
-          <div class="w-full grid grid-flow-row gap-4">
-            <span class="font-jetbrains-mono text-neutral-500 text-4xl ml-1">test type</span>
-            <div class="grid grid-flow-col gap-4 w-max">
-              <button id="options-test-type-words-button"
-                class="font-jetbrains-mono text-blue-500 hover:bg-blue-500/20 rounded-md p-1 text-4xl duration-200 ease-in-out">
-                words
-              </button>
-            </div>
-          </div>
-          <div class="w-full grid grid-flow-row gap-4">
-            <span class="font-jetbrains-mono text-neutral-500 text-4xl ml-1">words</span>
-            <div class="flex gap-4 w-max">
-              <button id="options-words-10-button"
-                class="font-jetbrains-mono text-blue-500 hover:bg-blue-500/20 rounded-md p-1 text-4xl duration-200 ease-in-out">
-                10
-              </button>
-              <button id="options-words-25-button"
-                class="font-jetbrains-mono text-blue-500 hover:bg-blue-500/20 rounded-md p-1 text-4xl duration-200 ease-in-out">
-                25
-              </button>
-              <button id="options-words-50-button"
-                class="font-jetbrains-mono text-blue-500 hover:bg-blue-500/20 rounded-md p-1 text-4xl duration-200 ease-in-out">
-                50
-              </button>
-              <button id="options-words-100-button"
-                class="font-jetbrains-mono text-blue-500 hover:bg-blue-500/20 rounded-md p-1 text-4xl duration-200 ease-in-out">
-                100
-              </button>
-              <button id="options-words-200-button"
-                class="font-jetbrains-mono text-blue-500 hover:bg-blue-500/20 rounded-md p-1 text-4xl duration-200 ease-in-out">
-                200
-              </button>
-            </div>
-          </div>
-          <div class="w-full grid grid-flow-row gap-4">
-            <span class="font-jetbrains-mono text-neutral-500 text-4xl ml-1">current word indicator animations</span>
-            <div class="grid grid-flow-col gap-4 w-max">
-              <button id="options-current-word-indicator-animations-on-button"
-                class="font-jetbrains-mono text-blue-500 hover:bg-blue-500/20 rounded-md p-1 text-4xl duration-200 ease-in-out">
-                on
-              </button>
-              <button id="options-current-word-indicator-animations-off-button"
-                class="font-jetbrains-mono text-blue-500 hover:bg-blue-500/20 rounded-md p-1 text-4xl duration-200 ease-in-out">
-                off
-              </button>
-            </div>
-          </div>
-          <button id="options-done-button" class="cursor-pointer">
-            <span
-              class="font-jetbrains-mono text-blue-500 hover:bg-blue-500/20 rounded-md p-1 text-4xl duration-200 ease-in-out">
-              done
-            </span>
-          </button>
-        </div>
-      </div>
 
-      <button id="restart-test-button"
-        class="bg-neutral-900 hover:bg-neutral-800 focus:bg-neutral-800 transition p-2 rounded-md cursor-pointer outline-none duration-100 ease-in-out">
-        <span class="font-jetbrains-mono text-neutral-500 text-4xl">restart test</span>
-      </button>
+        <button id="restart-test-button" class="cursor-pointer rounded-md bg-neutral-900 p-2 outline-none transition duration-100 ease-in-out hover:bg-neutral-800 focus:bg-neutral-800">
+          <span class="font-jetbrains-mono text-4xl text-neutral-500">restart test</span>
+        </button>
+      </div>
     </div>
-  </div>
-</body>
-
+  </body>
 </html>

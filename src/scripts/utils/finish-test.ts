@@ -3,7 +3,13 @@ import { displayCard } from "./card";
 import { setCurrentState } from "./current-state";
 import { hideCurrentWordIndicator } from "./current-word-indicator";
 import { formatTimeShort } from "./format";
-import { getCharsTyped, getTestEndTime, getTestInfo, getTestStartTime, setTestEndTime } from "./set-test-info";
+import {
+  getCharsTyped,
+  getTestEndTime,
+  getTestInfo,
+  getTestStartTime,
+  setTestEndTime
+} from "./set-test-info";
 import { hideTimer, stopTimer } from "./timer";
 
 export const finishTest = () => {

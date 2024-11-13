@@ -25,11 +25,20 @@ export const buttonSwitches: ButtonSwitch[] = [
     attr: "options-test-type"
   },
   {
-    buttons: [optionsWords10Button, optionsWords25Button, optionsWords50Button, optionsWords100Button, optionsWords200Button],
+    buttons: [
+      optionsWords10Button,
+      optionsWords25Button,
+      optionsWords50Button,
+      optionsWords100Button,
+      optionsWords200Button
+    ],
     attr: "options-words"
   },
   {
-    buttons: [optionsCurrentWordIndicatorAnimationsOnButton, optionsCurrentWordIndicatorAnimationsOffButton],
+    buttons: [
+      optionsCurrentWordIndicatorAnimationsOnButton,
+      optionsCurrentWordIndicatorAnimationsOffButton
+    ],
     attr: "options-current-word-indicator-animations"
   }
 ];

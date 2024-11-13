@@ -2,11 +2,21 @@ import type { TestInfo } from "./types";
 import { currentWordIndicator, testInput, testText } from "./ui";
 import { getConfig } from "./utils/config/config-helpers";
 import { getCurrentState, setCurrentState } from "./utils/current-state";
-import { alignCurrentWordIndicator, hideCurrentWordIndicator, showCurrentWordIndicator } from "./utils/current-word-indicator";
+import {
+  alignCurrentWordIndicator,
+  hideCurrentWordIndicator,
+  showCurrentWordIndicator
+} from "./utils/current-word-indicator";
 import { finishTest } from "./utils/finish-test";
 import { focusTestInput, tryFocusTestInput, unfocusTestInput } from "./utils/input";
 import { tryFocusRestartButton, unfocusRestartButton } from "./utils/restart-button";
-import { getCharsTyped, getWordIndex, setCharsTyped, setTestStartTime, setWordIndex } from "./utils/set-test-info";
+import {
+  getCharsTyped,
+  getWordIndex,
+  setCharsTyped,
+  setTestStartTime,
+  setWordIndex
+} from "./utils/set-test-info";
 import { startTimer } from "./utils/timer";
 
 export const listenToEvents = () => {
@@ -104,7 +114,9 @@ const listenCharInput = () => {
     const isLastWord = wordIndex === totalWords - 1;
 
     if (isLastWord && testInput.value === wordSpanEl.textContent) {
-      setCharsTyped(getCharsTyped() + (wordSpanEl.textContent as string).length + (isLastWord ? 0 : 1));
+      setCharsTyped(
+        getCharsTyped() + (wordSpanEl.textContent as string).length + (isLastWord ? 0 : 1)
+      );
       finishTest();
     }
   });

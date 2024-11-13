@@ -19,6 +19,8 @@ export const fillOptions = (config: Config) => {
   else if (config.testInfo.words === 100) optionsWords100Button.click();
   else if (config.testInfo.words === 200) optionsWords200Button.click();
 
-  if (config.currentWordIndicatorAnimations === "on") optionsCurrentWordIndicatorAnimationsOnButton.click();
-  else if (config.currentWordIndicatorAnimations === "off") optionsCurrentWordIndicatorAnimationsOffButton.click();
+  if (config.currentWordIndicatorAnimations === "on")
+    optionsCurrentWordIndicatorAnimationsOnButton.click();
+  else if (config.currentWordIndicatorAnimations === "off")
+    optionsCurrentWordIndicatorAnimationsOffButton.click();
 };
