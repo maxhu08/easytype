@@ -136,7 +136,16 @@ export const listenGlobalKeys = () => {
 };
 
 const realignCurrentWordIndicatorOnResize = () => {
+  let resizeTimeout: ReturnType<typeof setTimeout>;
+
   window.addEventListener("resize", () => {
-    hideCurrentWordIndicator();
+    clearTimeout(resizeTimeout);
+
+    resizeTimeout = setTimeout(() => {
+      const wordIndex = getWordIndex();
+      const wordSpanEl = document.getElementById(`w-${wordIndex}`) as HTMLSpanElement;
+
+      alignCurrentWordIndicator(wordSpanEl);
+    }, 250);
   });
 };
