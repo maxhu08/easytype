@@ -44,6 +44,13 @@ const listenFocusTestInput = () => {
 
 const listenCompleteWord = () => {
   testInput.addEventListener("keydown", (e) => {
+    if (getConfig().currentWordIndicatorAnimations === "on" && e.key !== "Backspace") {
+      currentWordIndicator.style.scale = "1.20";
+      setTimeout(() => {
+        currentWordIndicator.style.scale = "1.00";
+      }, 50);
+    }
+
     if (e.key === " " && getCurrentState() === "in-progress") {
       e.preventDefault();
       let wordIndex = getWordIndex();
@@ -102,13 +109,6 @@ const listenCharInput = () => {
 
     if (!correctSoFar) currentWordIndicator.classList.replace("bg-neutral-500", "bg-rose-500");
     else currentWordIndicator.classList.replace("bg-rose-500", "bg-neutral-500");
-
-    if (getConfig().currentWordIndicatorAnimations === "on") {
-      currentWordIndicator.style.scale = "1.20";
-      setTimeout(() => {
-        currentWordIndicator.style.scale = "1.00";
-      }, 50);
-    }
 
     const totalWords = getConfig().testInfo.words;
     const isLastWord = wordIndex === totalWords - 1;
