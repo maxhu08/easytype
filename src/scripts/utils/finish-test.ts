@@ -30,7 +30,11 @@ export const finishTest = () => {
   const timeAsMinutes = time / 60000;
   const wpm = Math.floor(charsTyped / (timeAsMinutes * 5));
 
-  wpmText.textContent = wpm + " wpm";
+  if (wpm < 1) {
+    wpmText.textContent = "< 0 wpm";
+  } else {
+    wpmText.textContent = wpm + " wpm";
+  }
   testTypeText.textContent = "words " + testInfo.words;
 
   wordsText.textContent = testInfo.words + " words";
